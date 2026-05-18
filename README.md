@@ -4,14 +4,17 @@
 **NIM:** F1D02310144
 **Matakuliah:** Pemrograman Mobile
 
-Tugas Akhir Pemrograman Mobile - Aplikasi Android untuk melakukan autentikasi ke API dan menampilkan daftar data pasien menggunakan RecyclerView.
+Tugas Akhir Pemrograman Mobile - Aplikasi Android untuk melakukan manajemen data pasien secara CRUD (Create, Read, Update, Delete) melalui integrasi REST API.
 
 ## 🚀 Fitur Utama
-- **Login API**: Autentikasi user menggunakan endpoint POST `/api/login`.
-- **Session Management**: Menyimpan Token (Bearer) dan data user secara aman menggunakan `SharedPreferences`.
-- **Daftar Pasien**: Mengambil data dari endpoint GET `/api/pasien` dengan proteksi `Authorization Header`.
-- **RecyclerView**: Menampilkan informasi pasien (Nama, TTL, Gender, Alamat, No Telp) dalam bentuk list yang rapi.
-- **Indikator Loading**: Menampilkan `ProgressBar` saat proses request ke server berlangsung.
+- **Autentikasi User**: Login menggunakan endpoint API dan manajemen session menggunakan `SharedPreferences` untuk menyimpan Token (Bearer).
+- **CRUD Pasien**: 
+    - **Create**: Menambah data pasien baru dengan validasi input dan *Date Picker* untuk tanggal lahir.
+    - **Read**: Menampilkan daftar pasien secara real-time dari server menggunakan `RecyclerView`.
+    - **Update**: Memperbarui informasi data pasien yang sudah ada.
+    - **Delete**: Menghapus data pasien dengan dialog konfirmasi keamanan.
+- **Manajemen Session**: Fitur Logout dan pengecekan otomatis status login saat aplikasi dibuka.
+- **UI/UX Modern**: Menggunakan Material Design components, FloatingActionButton, dan indikator loading (`ProgressBar`).
 
 ## 🛠️ Tech Stack
 - **Language**: [Kotlin](https://kotlinlang.org/)
@@ -22,16 +25,27 @@ Tugas Akhir Pemrograman Mobile - Aplikasi Android untuk melakukan autentikasi ke
 - **Architecture**: Modern Android Coding Patterns
 
 ## 📸 Screenshots
-*(Setelah Anda mengambil screenshot aplikasi, masukkan filenya ke folder `screenshots` di repository ini dan sesuaikan link di bawah)*
 
-| Halaman Login | Daftar Data Pasien |
-|---|---|
-| <img src="screenshots/login.png" width="250"> | <img src="screenshots/main_activity.png" width="250"> |
+- **Halaman Login & Daftar Pasien**:
+<table>
+  <tr>
+    <td><img width="300" alt="Login" src="https://github.com/user-attachments/assets/ca71e18b-e6d0-4434-9e8c-56bebb73bb52" /></td>
+    <td><img width="300" alt="Daftar Pasien" src="https://github.com/user-attachments/assets/a8225037-5ec3-48d2-845e-cc8c42737a68" /></td>
+  </tr>
+</table>
+
+- **Edit & Hapus Data**:
+<table>
+  <tr>
+    <td><img width="300" alt="Edit Data" src="https://github.com/user-attachments/assets/54680a59-871e-4a1a-bfcd-00b863c43dec" /></td>
+    <td><img width="300" alt="Hapus Data" src="https://github.com/user-attachments/assets/a87b766e-1f0d-4a4d-b66c-f7bc162ee60c" /></td>
+  </tr>
+</table>
 
 ## ⚙️ Cara Menjalankan
 1. Clone repository ini:
    ```bash
-   git clone https://github.com/Pabloz666999/T5-Mobile.git
+   git clone https://github.com/PabloXr6/T5-Mobile.git
    ```
 2. Buka project menggunakan **Android Studio (Giraffe/Hedgehog atau versi terbaru)**.
 3. Tunggu proses **Gradle Sync** selesai.
@@ -41,7 +55,10 @@ Tugas Akhir Pemrograman Mobile - Aplikasi Android untuk melakukan autentikasi ke
 ## 🔗 Endpoint API
 - **Base URL**: `https://api.pahrul.my.id/`
 - **Login**: `POST /api/login`
-- **Data Pasien**: `GET /api/pasien` (Wajib Header `Authorization: Bearer {token}`)
+- **Get Pasien**: `GET /api/pasien`
+- **Create Pasien**: `POST /api/pasien`
+- **Update Pasien**: `PUT /api/pasien/{id}`
+- **Delete Pasien**: `DELETE /api/pasien/{id}`
+*(Semua endpoint pasien memerlukan Header `Authorization: Bearer {token}`)*
 
 ---
-

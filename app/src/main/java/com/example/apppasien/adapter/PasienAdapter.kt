@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apppasien.databinding.ItemPasienBinding
 import com.example.apppasien.model.Pasien
 
-class PasienAdapter(private val listPasien: List<Pasien>) : RecyclerView.Adapter<PasienAdapter.PasienViewHolder>() {
+class PasienAdapter(
+    private val listPasien: List<Pasien>,
+    private val onEditClick: (Pasien) -> Unit,
+    private val onDeleteClick: (Pasien) -> Unit
+) : RecyclerView.Adapter<PasienAdapter.PasienViewHolder>() {
 
     inner class PasienViewHolder(private val binding: ItemPasienBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(pasien: Pasien) {
@@ -14,6 +18,9 @@ class PasienAdapter(private val listPasien: List<Pasien>) : RecyclerView.Adapter
             binding.tvTglLahirGender.text = "${pasien.tanggalLahir} | ${pasien.jenisKelamin}"
             binding.tvNoTelp.text = pasien.noTelepon
             binding.tvAlamat.text = pasien.alamat
+
+            binding.btnEdit.setOnClickListener { onEditClick(pasien) }
+            binding.btnDelete.setOnClickListener { onDeleteClick(pasien) }
         }
     }
 

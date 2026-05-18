@@ -1,6 +1,7 @@
 package com.example.apppasien.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class PasienResponse(
     val success: Boolean,
@@ -15,4 +16,18 @@ data class Pasien(
     @SerializedName("jenis_kelamin") val jenisKelamin: String,
     val alamat: String,
     @SerializedName("no_telepon") val noTelepon: String
+) : Serializable
+
+data class PasienCreateRequest(
+    val nama: String,
+    @SerializedName("tanggal_lahir") val tanggalLahir: String,
+    @SerializedName("jenis_kelamin") val jenisKelamin: String,
+    val alamat: String,
+    @SerializedName("no_telepon") val noTelepon: String
+)
+
+data class PasienSingleResponse(
+    val success: Boolean,
+    val message: String,
+    val data: Pasien
 )

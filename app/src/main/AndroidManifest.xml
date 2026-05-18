@@ -25,6 +25,10 @@
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".AddPasienActivity"
+            android:exported="false"
+            android:label="Tambah Pasien" />
     </application>
 
 </manifest>
